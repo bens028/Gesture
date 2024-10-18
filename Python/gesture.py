@@ -14,7 +14,7 @@ mp_drawing = mp.solutions.drawing_utils
 
 #hii
 #aha7hdaybfysr
-
+#hello
 def is_hi_sign(hand_landmarks):
     thumb_tip = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP]
     thumb_ip = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_IP]
