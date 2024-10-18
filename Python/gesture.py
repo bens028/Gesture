@@ -7,6 +7,8 @@ import customtkinter as ctk
 from customtkinter import *
 from PIL import Image, ImageTk
 import customtkinter as ctk
+import mysql.connector
+from tkinter import messagebox
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(max_num_hands=6, min_detection_confidence=0.7)
@@ -238,6 +240,7 @@ def show_tutorial():
     global fl
     global ft
     global fk
+    
 
 #Up Frame
 
@@ -536,12 +539,37 @@ def show_login():
                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                border_color="black", border_width=2, command=return_to_settings)
     login_back.place(x=665, y=500)
+    
+   
+    username = user_entry.get()
+    password = pass_entry.get()
+
+    if username == "" or password == "":
+        messagebox.showerror("Input Error", "All fields are required")
+        return
+
+    cursor.execute("SELECT password FROM user WHERE username = %s", (username,))
+    result = cursor.fetchone()
+
+    if result and password == result[0]:  # Check plain text password
+        status_label.config(text=f"Welcome, {username}!", fg="green")
+    else:
+        status_label.config(text="Invalid username or password.", fg="red")
+
 
 
 
 #code here for database login
 #Button Login_button
 #Textfield user_entry pass_entry
+db = mysql.connector.connect(
+    host="localhost",
+    port=3307,              # MySQL server port
+    user="root",
+    password="",
+    database="client"      # Replace with your database name
+)
+
 
 
 
@@ -593,7 +621,8 @@ def show_main():
     if 'fl' in globals():
         fl.place_forget()
     if 'fk' in globals():
-        fk.place_forget()                  
+        fk.place_forget()
+                      
 
        
     
