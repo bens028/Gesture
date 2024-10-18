@@ -540,7 +540,7 @@ def show_login():
                                border_color="black", border_width=2, command=return_to_settings)
     login_back.place(x=665, y=500)
 
-    def register_user():
+
     username = user_entry.get()
     password = pass_entry.get()
 
@@ -555,6 +555,10 @@ def show_login():
         user_entry.delete(0, tk.END)
         pass_entry.delete(0, tk.END())
         status_label.config(text="")
+
+    except mysql.connector.Error as err:
+        messagebox.showerror("Database Error", f"Error: {err}")
+        db.rollback()
     
    
     username = user_entry.get()
