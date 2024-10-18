@@ -600,6 +600,7 @@ cursor.execute("""
     )
 """)
 # Status label to show login feedback
+root = tk.Tk()
 status_label = tk.Label(root, text="", font=("Helvetica", 10))
 status_label.grid(row=3, column=0, columnspan=2, pady=10)
 
