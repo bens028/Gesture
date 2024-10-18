@@ -539,6 +539,22 @@ def show_login():
                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                border_color="black", border_width=2, command=return_to_settings)
     login_back.place(x=665, y=500)
+
+    def register_user():
+    username = user_entry.get()
+    password = pass_entry.get()
+
+    if username == "" or password == "":
+        messagebox.showerror("Input Error", "All fields are required")
+        return
+
+    try:
+        cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, password))
+        db.commit()
+        messagebox.showinfo("Registration", "Registration successful!")
+        user_entry.delete(0, tk.END)
+        pass_entry.delete(0, tk.END())
+        status_label.config(text="")
     
    
     username = user_entry.get()
@@ -569,6 +585,19 @@ db = mysql.connector.connect(
     password="",
     database="client"      # Replace with your database name
 )
+cursor = db.cursor()
+
+# Create 'users' table if it doesn't exist
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS user (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL
+    )
+""")
+# Status label to show login feedback
+status_label = tk.Label(root, text="", font=("Helvetica", 10))
+status_label.grid(row=3, column=0, columnspan=2, pady=10)
 
 
 
