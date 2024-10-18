@@ -12,7 +12,8 @@ mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(max_num_hands=6, min_detection_confidence=0.7)
 mp_drawing = mp.solutions.drawing_utils
 
-#hii
+#hii.
+#hello
 
 
 def is_hi_sign(hand_landmarks):
