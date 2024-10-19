@@ -113,10 +113,6 @@ def is_ok_sign(hand_landmarks):
 
             
    
-def stop_camera(cap):
-    if cap is not None and cap.isOpened():
-        cap.release()
-
 def back_to_main():
    
     if 'cap' in globals():
@@ -132,94 +128,153 @@ def back_to_main():
   
     show_main()
 
+
+   
+def stop_camera(cap):
+    if cap is not None and cap.isOpened():
+        cap.release()
+
+
+
 def start_action():
-    global frame, camera_frame, cap
+    global frame, camera_frame, cap, camera_on, on_off_button, me
     
     for widget in root.winfo_children():
         widget.grid_forget()
-
     
     frame = tk.Frame(root, bg="#0B6477")
     frame.place(x=100, y=150, width=3630, height=1720)
-
-   
-    camera_frame = tk.Label(frame)
     
-   
-    camera_x = 1500  
-    camera_y = 500 
-    camera_width = 1000 
-    camera_height = 1000  
+    camera_frame = tk.Label(frame)
+
+    me = tk.Frame(root, bg="#14919B")
+    me.place(x=100, y=150, width=3630, height=150)
+
+    d_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    d = Image.open(d_path).resize((150, 150))
+    photo = ImageTk.PhotoImage(d)
+    lw = tk.Label(me, image=photo, bg="#14919B")
+    lw.place(x=30, y=5)
+    lw.image = photo
+
+    text_label = ctk.CTkLabel(me, text="MORRON 5", font=("Arial", 26), text_color="white")
+    text_label.place(x=100, y=20)
+    
+    camera_x = 0
+    camera_y = 0
+    camera_width = 3630
+    camera_height = 1580
     
     camera_frame.place(x=camera_x, y=camera_y, width=camera_width, height=camera_height)
     
-    
-    back_button = ctk.CTkButton(frame, text="Back", corner_radius=25, width=200, height=50,
+    back_button = ctk.CTkButton(frame, text="Back",width=200, height=50,
                                 fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                 border_color="black", border_width=2, command=back_to_main)
-    back_button.place(x=camera_width + 20, y=20)  
+    back_button.place(x=20, y=710)
+
+
+    on_off_button = ctk.CTkButton(frame, text="Turn On Camera",width=200, height=50,
+                                  fg_color="#45DFB1", text_color="blue", hover_color="#0AD1C8",
+                                  border_color="black", border_width=2, command=toggle_camera)
+    on_off_button.place(x=300, y=710)
     
     
+    off_button = ctk.CTkButton(frame, text="Turn On Games",width=200, height=50,
+                                  fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                                  border_color="black", border_width=2, command=toggle_camera)
+    off_button.place(x=620, y=710)
+    
+    
+    
+    
+
+    camera_on = False
+    cap = None
+
+def toggle_camera():
+    global cap, camera_on
+    if camera_on:
+        stop_camera()
+        on_off_button.configure(text="Turn On Camera", text_color="blue")
+    else:
+        start_camera()
+        on_off_button.configure(text="Turn Off Camera", text_color="red")
+        
+
+
+
+def start_camera():
+    global cap, camera_on
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Camera not accessible.")
         return
+    camera_on = True
+    update_frame(cap, camera_frame, 0, 0, 3620, 1580)
 
-    camera_thread = threading.Thread(target=update_frame, args=(cap, camera_frame, camera_x, camera_y, camera_width, camera_height))
-    camera_thread.start()
+def stop_camera():
+    global cap, camera_on
+    if cap is not None and cap.isOpened():
+        camera_on = False
+        cap.release()
+        camera_frame.configure(image='')
 
 def update_frame(cap, camera_frame, x, y, width, height):
+    global camera_on
+    if not camera_on:
+        return
+    
     ret, frame = cap.read()
     if not ret:
         print("Unable to capture video")
         return
-
     
     frame = cv2.flip(frame, 1)
-    
-    
     frame = cv2.resize(frame, (width, height))
-    
     
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(rgb_frame)
-
     
     hand_color = (0, 255, 0)
     if results.multi_hand_landmarks:
         for hand_landmarks in results.multi_hand_landmarks:
             if is_ok_sign(hand_landmarks):
-                cv2.putText(frame, "OK!", (10, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, hand_color, 2)
+                cv2.putText(frame, "OK!", (10, 300), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
             elif is_peace_sign(hand_landmarks):
-                cv2.putText(frame, "Peace!", (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, hand_color, 2)
+                cv2.putText(frame, "Peace!", (10, 300), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
             elif is_hi_sign(hand_landmarks):
-                cv2.putText(frame, "Hi!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, hand_color, 2)
+                cv2.putText(frame, "Hi!", (10, 300), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
             elif is_call_me_sign(hand_landmarks):
-                cv2.putText(frame, "Call Me!", (10, 190), cv2.FONT_HERSHEY_SIMPLEX, 1, hand_color, 2)
+                cv2.putText(frame, "Call Me!", (10, 400), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
             elif is_up_me_sign(hand_landmarks):
-                cv2.putText(frame, "Thumbs Up!", (10, 280), cv2.FONT_HERSHEY_SIMPLEX, 1, hand_color, 2)
+                cv2.putText(frame, "Thumbs Up!", (10, 500), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
             elif is_drink_sign(hand_landmarks):
-                cv2.putText(frame, "I'm going to drink", (40, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, hand_color, 2)
-
-           
+                cv2.putText(frame, "I'm going to drink", (40, 700), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
+            
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS,
                                        landmark_drawing_spec=mp_drawing.DrawingSpec(color=hand_color, thickness=2, circle_radius=2))
-
-   
+    
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     
-   
     img = Image.fromarray(rgb_frame)
     imgtk = ImageTk.PhotoImage(image=img)
-
-   
+    
     camera_frame.imgtk = imgtk
     camera_frame.configure(image=imgtk)
     
-    if cap.isOpened():
+    if camera_on and cap.isOpened():
         camera_frame.after(10, update_frame, cap, camera_frame, x, y, width, height)
     else:
         print("Camera is closed")
+
+def back_to_main():
+    global cap, camera_on
+    stop_camera()
+    if 'camera_frame' in globals():
+        camera_frame.place_forget()
+    if 'frame' in globals():
+        frame.place_forget()
+    show_main()
 
    
 
@@ -421,9 +476,13 @@ def about():
                                         text_color="white", font=("Arial", 14), wraplength=1000)
     about_info.place(x=200, y=200)
 
-    vince = ctk.CTkLabel(rr, text="VINCE NELMAR ALOBIN - BACKEND",
+    vince = ctk.CTkLabel(rr, text="ALOBIN",
                                      text_color="white", font=("Arial", 16), wraplength=800)
-    vince.place(x=20, y=300)
+    vince.place(x=120, y=30)
+
+    vince = ctk.CTkLabel(rr, text="BACKEND",
+                                     text_color="white", font=("Arial", 16), wraplength=800)
+    vince.place(x=100, y=300)
 
     g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\picc.PNG"
     g = Image.open(g_path).resize((450, 450))
@@ -433,25 +492,13 @@ def about():
     el.image = photo  
 
     gg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\bara.PNG"
-    gg = Image.open(gg_path).resize((450, 450))
-    photo = ImageTk.PhotoImage(gg)
-    e = tk.Label(rr, image=photo, bg="#14919B")
-    e.place(x=800, y=150)
-    e.image = photo  
+    
 
     gi_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\jc.PNG"
-    gi = Image.open(gi_path).resize((450, 450))
-    photo = ImageTk.PhotoImage(gi)
-    ee = tk.Label(rr, image=photo, bg="#14919B")
-    ee.place(x=1500, y=150)
-    ee.image = photo  
+    
 
     ii_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ash.PNG"
-    ii = Image.open(ii_path).resize((450, 450))
-    photo = ImageTk.PhotoImage(ii)
-    eg = tk.Label(rr, image=photo, bg="#14919B")
-    eg.place(x=2200, y=150)
-    eg.image = photo  
+     
 
     i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\rick.PNG"
     i = Image.open(i_path).resize((450, 450))
@@ -467,7 +514,6 @@ def about():
                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                border_color="black", border_width=2, command=return_to_settings)
     about_back.place(x=20, y=20)
-
 
 def return_to_settings():
     show_settings()
