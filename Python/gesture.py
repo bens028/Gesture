@@ -10,13 +10,13 @@ import customtkinter as ctk
 import mysql.connector
 from tkinter import messagebox
 
+
+
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(max_num_hands=6, min_detection_confidence=0.7)
 mp_drawing = mp.solutions.drawing_utils
 
-#hii
-#aha7hdaybfysr
-#hello
+
 def is_hi_sign(hand_landmarks):
     thumb_tip = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP]
     thumb_ip = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_IP]
@@ -112,7 +112,8 @@ def is_ok_sign(hand_landmarks):
 
 
             
-   
+
+
 def back_to_main():
    
     if 'cap' in globals():
@@ -137,7 +138,7 @@ def stop_camera(cap):
 
 
 def start_action():
-    global frame, camera_frame, cap, camera_on, on_off_button, me
+    global frame, camera_frame, cap, camera_on, on_off_button, me, games
     
     for widget in root.winfo_children():
         widget.grid_forget()
@@ -179,17 +180,17 @@ def start_action():
     on_off_button.place(x=300, y=710)
     
     
-    off_button = ctk.CTkButton(frame, text="Turn On Games",width=200, height=50,
-                                  fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
-                                  border_color="black", border_width=2, command=toggle_camera)
-    off_button.place(x=620, y=710)
-    
-    
-    
     
 
     camera_on = False
     cap = None
+
+
+    games = ctk.CTkButton(frame, text="Turn On Games",width=200, height=50,
+                                  fg_color="#45DFB1", text_color="blue", hover_color="#0AD1C8",
+                                  border_color="black", border_width=2, command=toggle_camera)
+    games.place(x=620, y=710)
+
 
 def toggle_camera():
     global cap, camera_on
@@ -199,8 +200,8 @@ def toggle_camera():
     else:
         start_camera()
         on_off_button.configure(text="Turn Off Camera", text_color="red")
-        
 
+    
 
 
 def start_camera():
@@ -210,7 +211,7 @@ def start_camera():
         print("Error: Camera not accessible.")
         return
     camera_on = True
-    update_frame(cap, camera_frame, 0, 0, 3620, 1580)
+    update_frame(cap, camera_frame, 0, 0, 3630, 1580)
 
 def stop_camera():
     global cap, camera_on
@@ -235,7 +236,7 @@ def update_frame(cap, camera_frame, x, y, width, height):
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(rgb_frame)
     
-    hand_color = (0, 255, 0)
+    hand_color = (5, 255, 5)
     if results.multi_hand_landmarks:
         for hand_landmarks in results.multi_hand_landmarks:
             if is_ok_sign(hand_landmarks):
@@ -252,7 +253,7 @@ def update_frame(cap, camera_frame, x, y, width, height):
                 cv2.putText(frame, "I'm going to drink", (40, 700), cv2.FONT_HERSHEY_SIMPLEX, 5, hand_color, 2)
             
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS,
-                                       landmark_drawing_spec=mp_drawing.DrawingSpec(color=hand_color, thickness=2, circle_radius=2))
+                                       landmark_drawing_spec=mp_drawing.DrawingSpec(color=hand_color, thickness=15, circle_radius=15))
     
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     
@@ -283,19 +284,8 @@ def show_tutorial():
     for widget in frame.winfo_children():
         widget.pack_forget()
 
-    global fra
-    global fer
-    global fru
-    global ff
-    global fe
-    global fa
-    global fp
-    global fd
-    global fq
-    global fl
-    global ft
-    global fk
-    
+    global fra, fer, fru, ff, fe, fa, fp, fd, fq, fl, ft, fk
+   
 
 #Up Frame
 
@@ -306,16 +296,20 @@ def show_tutorial():
     fer = tk.Frame(root, bg="#213A57")
     fer.place(x=155, y=200, width=3520, height=1620)
 
-    back_button = ctk.CTkButton(fer, text=".", corner_radius=25, width=35, height=35,
+    h = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    hh = Image.open(h).resize((60, 60))  
+    mq = ImageTk.PhotoImage(hh)  
+
+    back_button = ctk.CTkButton(fer, text="",image=mq, corner_radius=25, width=35, height=35,
                                 fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                 border_color="black", border_width=2, command=show_main)
-    back_button.place(x=12, y=20)
+    back_button.place(x=3, y=3)
 
     fru = tk.Frame(root, bg="#45DFB1")
     fru.place(x=300, y=270, width=500, height=700)
 
-    gg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gg = Image.open(gg_path).resize((450, 450))
+    gg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\peace.PNG"
+    gg = Image.open(gg_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gg)
     ell = tk.Label(fru, image=photo, bg="#45DFB1")
     ell.place(x=30, y=120)
@@ -325,7 +319,7 @@ def show_tutorial():
     ff.place(x=1000, y=270, width=500, height=700)
 
     gr_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gr = Image.open(gr_path).resize((450, 450))
+    gr = Image.open(gr_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gr)
     eli = tk.Label(ff, image=photo, bg="#45DFB1")
     eli.place(x=30, y=120)
@@ -334,8 +328,8 @@ def show_tutorial():
     fe = tk.Frame(root, bg="#45DFB1")
     fe.place(x=1700, y=270, width=500, height=700)
 
-    ge_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    ge = Image.open(ge_path).resize((450, 450))
+    ge_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\call.PNG"
+    ge = Image.open(ge_path).resize((350, 350))
     photo = ImageTk.PhotoImage(ge)
     elo = tk.Label(fe, image=photo, bg="#45DFB1")
     elo.place(x=30, y=120)
@@ -345,7 +339,7 @@ def show_tutorial():
     fa.place(x=2400, y=270, width=500, height=700)
 
     ga_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    ga = Image.open(ga_path).resize((450, 450))
+    ga = Image.open(ga_path).resize((350, 350))
     photo = ImageTk.PhotoImage(ga)
     ela = tk.Label(fa, image=photo, bg="#45DFB1")
     ela.place(x=30, y=120)
@@ -354,8 +348,8 @@ def show_tutorial():
     fp = tk.Frame(root, bg="#45DFB1")
     fp.place(x=3100, y=270, width=500, height=700)
 
-    go_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    go = Image.open(go_path).resize((450, 450))
+    go_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\drink.PNG"
+    go = Image.open(go_path).resize((350, 350))
     photo = ImageTk.PhotoImage(go)
     elx = tk.Label(fp, image=photo, bg="#45DFB1")
     elx.place(x=30, y=120)
@@ -368,7 +362,7 @@ def show_tutorial():
     fd.place(x=300, y=1050, width=500, height=700)
 
     gp_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gp = Image.open(gp_path).resize((450, 450))
+    gp = Image.open(gp_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gp)
     elq = tk.Label(fd, image=photo, bg="#45DFB1")
     elq.place(x=30, y=120)
@@ -378,7 +372,7 @@ def show_tutorial():
     fq.place(x=1000, y=1050, width=500, height=700)
 
     gd_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gd = Image.open(gd_path).resize((450, 450))
+    gd = Image.open(gd_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gd)
     elw = tk.Label(fq, image=photo, bg="#45DFB1")
     elw.place(x=30, y=120)
@@ -388,7 +382,7 @@ def show_tutorial():
     ft.place(x=1700, y=1050, width=500, height=700)
 
     gk_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gk = Image.open(gk_path).resize((450, 450))
+    gk = Image.open(gk_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gk)
     elp = tk.Label(ft, image=photo, bg="#45DFB1")
     elp.place(x=30, y=120)
@@ -398,7 +392,7 @@ def show_tutorial():
     fl.place(x=2400, y=1050, width=500, height=700)
 
     gs_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gs = Image.open(gs_path).resize((450, 450))
+    gs = Image.open(gs_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gs)
     elt = tk.Label(fl, image=photo, bg="#45DFB1")
     elt.place(x=30, y=120)
@@ -408,13 +402,156 @@ def show_tutorial():
     fk.place(x=3100, y=1050, width=500, height=700)
 
     gy_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gy = Image.open(gy_path).resize((450, 450))
+    gy = Image.open(gy_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gy)
     elf = tk.Label(fk, image=photo, bg="#45DFB1")
     elf.place(x=30, y=120)
     elf.image = photo 
 
+def Social():
+    for widget in frame.winfo_children():
+        widget.pack_forget()
 
+    global frr
+    global rr
+    fra.place_forget()
+    frr = tk.Frame(root, bg="#213A57")
+    frr.place(x=155, y=200, width=3520, height=1620)
+   
+    text_label.place_forget()
+    fr.place_forget()
+    image_label.place_forget()
+   
+    path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    new = Image.open(path).resize((60, 60))  
+    mm = ImageTk.PhotoImage(new)  
+
+    so_button = ctk.CTkButton(frr, text="", image=mm, corner_radius=25, width=50, height=50,
+                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                                border_color="black", border_width=2, command=return_to_settings)
+    so_button.place(x=12, y=20)
+
+    pa = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven.PNG"
+    ne = Image.open(pa).resize((1050, 1250))  
+    mp = ImageTk.PhotoImage(ne)  
+
+    so_button = ctk.CTkButton(frr, text="", image=mp, corner_radius=25, width=200, height=600,
+                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                                border_color="black", border_width=2)
+    so_button.place(x=100, y=80)
+
+    a = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven2.PNG"
+    e = Image.open(a).resize((1400, 600))  
+    mu = ImageTk.PhotoImage(e)  
+
+    so_button = ctk.CTkButton(frr, text="", image=mu,corner_radius=25, width=700, height=300,
+                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                                border_color="black", border_width=2)
+    so_button.place(x=700, y=50)
+
+    aa = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven3.PNG"
+    ee = Image.open(aa).resize((700, 600))  
+    pl = ImageTk.PhotoImage(ee)  
+
+    so_button = ctk.CTkButton(frr, text="",image=pl, corner_radius=25, width=300, height=300,
+                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                                border_color="black", border_width=2)
+    so_button.place(x=700, y=400)
+
+    ah = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven4.PNG"
+    eh = Image.open(ah).resize((550, 600))  
+    pw = ImageTk.PhotoImage(eh)  
+
+    so_button = ctk.CTkButton(frr, text="",image=pw, corner_radius=25, width=300, height=300,
+                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                                border_color="black", border_width=2)
+    so_button.place(x=1100, y=400)
+
+    
+
+
+def TP():
+    for widget in frame.winfo_children():
+        widget.pack_forget()
+
+    global frr
+    global rr
+    fra.place_forget()
+    frr = tk.Frame(root, bg="#213A57")
+    frr.place(x=155, y=200, width=3520, height=1620)
+
+    text_label.place_forget()
+    fr.place_forget()
+    image_label.place_forget()
+
+    
+    new_image_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    new_image = Image.open(new_image_path).resize((60, 60))  
+    new_image_pho = ImageTk.PhotoImage(new_image)  
+
+    
+    tp_button = ctk.CTkButton(frr, text="", image=new_image_pho, corner_radius=25, width=50, height=50,
+                              fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                              border_color="black", border_width=2, command=return_to_settings)
+    tp_button.place(x=12, y=20)
+
+    
+    title_label = ctk.CTkLabel(frr, text="Terms and Privacy Policy", text_color="white", font=("Arial", 24))
+    title_label.place(x=200, y=50)
+
+    
+    terms_text = (
+        "Welcome to our application!\n\n"
+        "1. Terms of Use: By using this application, you agree to abide by the terms outlined here. "
+        "You are responsible for ensuring that your use of the app complies with all applicable laws.\n\n"
+        "2. Privacy Policy: We are committed to protecting your privacy. Any personal data you provide "
+        "while using the app will be kept confidential and used only for improving the user experience.\n\n"
+        "3. Data Collection: This application may collect anonymous data for analysis purposes to enhance "
+        "functionality. No personal data will be shared without your consent.\n\n"
+        "4. User Agreement: By using this app, you acknowledge that the developers hold no responsibility for "
+        "any damages or losses resulting from improper use of the app.\n\n"
+        "5. User Responsibility: Users are responsible for their actions within the app and for any content they share.\n\n"
+        "6. Service Availability: We strive to keep the application available and functioning, but we do not guarantee uninterrupted access.\n\n"
+        "7. Modification of Terms: We reserve the right to modify these terms at any time. Changes will be communicated to users.\n\n"
+        "8. Termination: We may terminate access to the app if users violate these terms or engage in harmful behavior.\n\n"
+        "9. Third-Party Services: The app may contain links to third-party services. We are not responsible for their content or privacy practices.\n\n"
+        "10. Contact Information: For questions about the terms or privacy policy, please contact our support team.\n\n"
+        "11. Intellectual Property: All content within the app is protected by copyright and cannot be reproduced without permission.\n\n"
+        "12. Disclaimer: The app is provided 'as is' without warranty of any kind. We do not guarantee accuracy or reliability of the information.\n\n"
+        "13. Limitation of Liability: We are not liable for any direct, indirect, incidental, or consequential damages arising from your use of the app.\n\n"
+        "14. Jurisdiction: These terms are governed by the laws of the jurisdiction in which we operate.\n\n"
+        "15. Severability: If any provision of these terms is found to be unenforceable, the remaining provisions shall remain in effect.\n\n"
+        "16. User Feedback: We welcome feedback to improve our services and will consider it in future updates.\n\n"
+        "17. Updates: The app may receive updates for improvements and bug fixes. Users are encouraged to install updates promptly.\n\n"
+        "18. Availability of Content: Content provided in the app may be subject to change without notice.\n\n"
+        "19. User Conduct: Users agree not to engage in any conduct that is harmful, threatening, or unlawful.\n\n"
+        "20. Consent: By using this app, you provide your consent to these terms and privacy policy."
+    )
+
+    
+    text_frame = tk.Frame(frr, bg="#213A57")
+    text_frame.place(x=200, y=100, width=3200, height=1400)
+
+    terms_scroll = tk.Scrollbar(text_frame)
+    terms_scroll.pack(side=tk.RIGHT, fill=tk.Y)
+
+    
+    terms_box = tk.Text(text_frame, wrap=tk.WORD, yscrollcommand=terms_scroll.set, bg="#213A57", fg="white", font=("Arial", 28))  
+    terms_box.insert(tk.END, terms_text)
+    terms_box.config(state=tk.DISABLED) 
+    terms_box.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+    terms_scroll.config(command=terms_box.yview)
+
+
+    agreement_var = tk.BooleanVar()
+    agreement_checkbox = tk.Checkbutton(frr, variable=agreement_var, bg="#213A57", font=("Arial", 24))  
+    agreement_checkbox.place(x=200, y=1550, width=30, height=30)  
+
+    
+    use = ctk.CTkLabel(frr, text="I agree to terms and privacy policy", text_color="white", font=("Arial", 16))  
+    use.place(x=130, y=680)  
+  
 
 
 def show_settings():
@@ -438,19 +575,71 @@ def show_settings():
     button = ctk.CTkButton(fra, text="About us", width=200, height=50,
                            fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                            border_color="black", border_width=2, command=about)
-    button.place(x=200, y=20)
+    button.place(x=200, y=100)
 
  
     button1 = ctk.CTkButton(fra, text="Log in", width=200, height=50,
                             fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                             border_color="black", border_width=2, command=show_login)
-    button1.place(x=400, y=20)
+    button1.place(x=200, y=200)
 
+    
+
+    sgt = ctk.CTkButton(fra, text="Social Media", width=200, height=50,
+                           fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                           border_color="black", border_width=2, command=Social)
+    sgt.place(x=600, y=100)
+
+ 
+    faq = ctk.CTkButton(fra, text="Terms and Privacy", width=200, height=50,
+                            fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
+                            border_color="black", border_width=2, command=TP)
+    faq.place(x=600, y=200)
+
+    
 
     back_button = ctk.CTkButton(fra, text="Back", corner_radius=25, width=200, height=50,
                                 fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                 border_color="black", border_width=2, command=show_main)
     back_button.place(x=300, y=600)
+
+    ho = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\bak.PNG"
+    hom = Image.open(ho).resize((250, 250))
+    photo = ImageTk.PhotoImage(hom)
+    hm = tk.Label(fra, image=photo, bg="#213A57") 
+    hm.place(x=420, y=1260)  
+    hm.image = photo  
+
+    abo = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ab.PNG"
+    abou = Image.open(abo).resize((130, 130))
+    photo = ImageTk.PhotoImage(abou)
+    ao = tk.Label(fra, image=photo, bg="#213A57") 
+    ao.place(x=250, y=210)  
+    ao.image = photo  
+
+    lo = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\log.PNG"
+    lol = Image.open(lo).resize((130, 130))
+    photo = ImageTk.PhotoImage(lol)
+    l = tk.Label(fra, image=photo, bg="#213A57") 
+    l.place(x=250, y=420)  
+    l.image = photo  
+
+    so = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\soc.PNG"
+    sos = Image.open(so).resize((130, 130))
+    photo = ImageTk.PhotoImage(sos)
+    s = tk.Label(fra, image=photo, bg="#213A57") 
+    s.place(x=1200, y=210)  
+    s.image = photo  
+
+    pem = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\priv.PNG"
+    po = Image.open(pem).resize((130, 130))
+    photo = ImageTk.PhotoImage(po)
+    pv = tk.Label(fra, image=photo, bg="#213A57") 
+    pv.place(x=1195, y=425)  
+    pv.image = photo  
+    
+
+
 
 
 def about():
@@ -466,15 +655,10 @@ def about():
     about_title = ctk.CTkLabel(frr, text="About Us", text_color="white", font=("Arial", 30))
     about_title.place(x=200, y=100)
 
-    about_description = ctk.CTkLabel(frr, text="This application is dedicated to providing excellent tutorial services about sign language.",
-                                     text_color="white", font=("Arial", 16), wraplength=800)
+    about_description = ctk.CTkLabel(frr, text="Introducing SignLearn, an innovative app designed to make learning and practicing sign language accessible and engaging for everyone. Whether you're a beginner eager to start or someone looking to enhance your skills, SignLearn offers interactive lessons, quizzes, and real-time practice exercises. The app utilizes visual demonstrations and personalized feedback to help users develop fluency in sign language, making it ideal for individuals, families, or educators who want to communicate more effectively with the deaf and hard-of-hearing community. With a user-friendly interface, progress tracking, and a vast library of signs, SignLearn makes mastering sign language both fun and convenient.",
+                                 text_color="white", font=("Arial", 16), wraplength=1000)
     about_description.place(x=200, y=180)
 
-   
-    about_info = ctk.CTkLabel(frr, text="Our mission is to innovate and inspire through our state-of-the-art technology. "
-                                        "We strive to make the world a better place with sustainable solutions.", 
-                                        text_color="white", font=("Arial", 14), wraplength=1000)
-    about_info.place(x=200, y=200)
 
     vince = ctk.CTkLabel(rr, text="ALOBIN",
                                      text_color="white", font=("Arial", 16), wraplength=800)
@@ -485,11 +669,7 @@ def about():
     vince.place(x=100, y=300)
 
     g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\picc.PNG"
-    g = Image.open(g_path).resize((450, 450))
-    photo = ImageTk.PhotoImage(g)
-    el = tk.Label(rr, image=photo, bg="#14919B")
-    el.place(x=100, y=150)
-    el.image = photo  
+    
 
     gg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\bara.PNG"
     
@@ -498,22 +678,24 @@ def about():
     
 
     ii_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ash.PNG"
+  
+    
      
 
     i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\rick.PNG"
-    i = Image.open(i_path).resize((450, 450))
-    photo = ImageTk.PhotoImage(i)
-    og = tk.Label(rr, image=photo, bg="#14919B")
-    og.place(x=2900, y=150)
-    og.image = photo  
-
    
 
+   
+    ab = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    abb = Image.open(ab).resize((60, 60))  
+    abu = ImageTk.PhotoImage(abb)  
 
-    about_back = ctk.CTkButton(frr, text=".", corner_radius=25, width=50, height=50,
+
+    about_back = ctk.CTkButton(frr, text="",image=abu, corner_radius=25, width=50, height=50,
                                fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                border_color="black", border_width=2, command=return_to_settings)
     about_back.place(x=20, y=20)
+
 
 def return_to_settings():
     show_settings()
@@ -625,35 +807,30 @@ def show_login():
 
 
 
-#code here for database login
-#Button Login_button
-#Textfield user_entry pass_entry
-db = mysql.connector.connect(
-    host="localhost",
-    port=3307,              # MySQL server port
-    user="root",
-    password="",
-    database="client"      # Replace with your database name
-)
-cursor = db.cursor()
-
-# Create 'users' table if it doesn't exist
-cursor.execute("""
-    CREATE TABLE IF NOT EXISTS user (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(50) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL
+    #code here for database login
+    #Button Login_button
+    #Textfield user_entry pass_entry
+    db = mysql.connector.connect(
+        host="localhost",
+        port=3307,              # MySQL server port
+        user="root",
+        password="",
+        database="client"      # Replace with your database name
     )
-""")
-# Status label to show login feedback
-root = tk.Tk()
-status_label = tk.Label(root, text="", font=("Helvetica", 10))
-status_label.grid(row=3, column=0, columnspan=2, pady=10)
+    cursor = db.cursor()
 
-
-
-
-
+    # Create 'users' table if it doesn't exist
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL
+        )
+    """)
+    # Status label to show login feedback
+    root = tk.Tk()
+    status_label = tk.Label(root, text="", font=("Helvetica", 10))
+    status_label.grid(row=3, column=0, columnspan=2, pady=10)
 
 
 def show_main():
@@ -701,8 +878,10 @@ def show_main():
     if 'fl' in globals():
         fl.place_forget()
     if 'fk' in globals():
-        fk.place_forget()
-                      
+        fk.place_forget()      
+    if 'me' in globals():
+        me.place_forget()     
+        
 
        
     
@@ -710,7 +889,7 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")  
 
 root = ctk.CTk()
-root.title("Sign Language")
+root.title("Sign Learn")
 root.geometry("3840x2160")
 
 
@@ -744,11 +923,11 @@ lab = tk.Label(frame, im=pho, bg="#0B6477")
 lab.place(x=1460, y=380)
 lab.image = photo
 
-i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\sta.PNG"
-i = Image.open(i_path).resize((160, 150))
+i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\star.PNG"
+i = Image.open(i_path).resize((155, 150))
 ph = ImageTk.PhotoImage(i)
 lb = tk.Label(frame, i=ph, bg="#0B6477")
-lb.place(x=1460, y=100)
+lb.place(x=1460, y=92)
 lb.image = photo 
 
 ima_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\com.PNG"
