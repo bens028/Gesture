@@ -1,42 +1,67 @@
 import tkinter as tk
-from tkinter import Frame
+from tkinter import Label, Frame
 import cv2
 from PIL import Image, ImageTk
 
-#hello try
+class CameraApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Camera On/Off Example")
+        self.root.geometry("800x600")  # Larger window to accommodate camera and buttons
+        
+        # Frame for the camera
+        self.camera_frame = Frame(root, width=640, height=480, bg="black")
+        self.camera_frame.pack(side=tk.TOP, padx=10, pady=10)
+        
+        # Frame to display the camera feed
+        self.camera_label = Label(self.camera_frame)
+        self.camera_label.pack()
 
-# Initialize Tkinter window
-window = tk.Tk()
-window.geometry("1280x720")  # Set window size
-window.title("Camera in Frame")
+        # Frame for buttons
+        self.button_frame = Frame(root)
+        self.button_frame.pack(side=tk.BOTTOM, pady=20)
 
-# Function to start camera feed
-def start_camera():
-    cap = cv2.VideoCapture(0)  # Open default camera
-    update_frame(cap)
+        # On and Off buttons
+        self.on_button = tk.Button(self.button_frame, text="On", command=self.start_camera)
+        self.on_button.pack(side=tk.LEFT, padx=10)
 
-# Function to update the frame with the camera feed
-def update_frame(cap):
-    _, frame = cap.read()  # Capture frame-by-frame
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # Convert color format
-    img = Image.fromarray(frame)
-    imgtk = ImageTk.PhotoImage(image=img)
-    
-    camera_label.imgtk = imgtk
-    camera_label.config(image=imgtk)
-    camera_label.after(10, lambda: update_frame(cap))  # Continuously update
+        self.off_button = tk.Button(self.button_frame, text="Off", command=self.stop_camera)
+        self.off_button.pack(side=tk.RIGHT, padx=10)
 
-# Frame to display camera feed
-camera_frame = Frame(window, width=640, height=480, bg="black")
-camera_frame.place(x=100, y=100)  # Adjust coordinates here (x=320, y=100)
+        self.cap = None
+        self.is_camera_on = False
 
-# Label inside the frame to hold the camera image
-camera_label = tk.Label(camera_frame)
-camera_label.pack()
+    def start_camera(self):
+        if not self.is_camera_on:
+            self.cap = cv2.VideoCapture(0)
+            self.is_camera_on = True
+            self.update_frame()
 
-# Start button to initiate the camera
-start_button = tk.Button(window, text="Start Camera", command=start_camera)
-start_button.place(x=560, y=600)  # Adjust coordinates of the button
+    def stop_camera(self):
+        if self.is_camera_on:
+            self.is_camera_on = False
+            if self.cap is not None:
+                self.cap.release()
+            self.display_placeholder()
 
-# Run the Tkinter main loop
-window.mainloop()
+    def update_frame(self):
+        if self.is_camera_on:
+            ret, frame = self.cap.read()
+            if ret:
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                img = Image.fromarray(frame)
+                imgtk = ImageTk.PhotoImage(image=img)
+                self.camera_label.imgtk = imgtk
+                self.camera_label.config(image=imgtk)
+            self.root.after(10, self.update_frame)
+
+    def display_placeholder(self):
+        placeholder = Image.new("RGB", (640, 480), color="gray")
+        img_placeholder = ImageTk.PhotoImage(image=placeholder)
+        self.camera_label.imgtk = img_placeholder
+        self.camera_label.config(image=img_placeholder)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = CameraApp(root)
+    root.mainloop()
