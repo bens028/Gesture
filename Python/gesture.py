@@ -151,7 +151,7 @@ def start_action():
     me = tk.Frame(root, bg="#14919B")
     me.place(x=100, y=150, width=3630, height=150)
 
-    d_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    d_path = "logoo.PNG"
     d = Image.open(d_path).resize((150, 150))
     photo = ImageTk.PhotoImage(d)
     lw = tk.Label(me, image=photo, bg="#14919B")
@@ -296,7 +296,7 @@ def show_tutorial():
     fer = tk.Frame(root, bg="#213A57")
     fer.place(x=155, y=200, width=3520, height=1620)
 
-    h = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    h = "set.PNG"
     hh = Image.open(h).resize((60, 60))  
     mq = ImageTk.PhotoImage(hh)  
 
@@ -308,7 +308,7 @@ def show_tutorial():
     fru = tk.Frame(root, bg="#45DFB1")
     fru.place(x=300, y=270, width=500, height=700)
 
-    gg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\peace.PNG"
+    gg_path = "peace.PNG"
     gg = Image.open(gg_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gg)
     ell = tk.Label(fru, image=photo, bg="#45DFB1")
@@ -318,7 +318,7 @@ def show_tutorial():
     ff = tk.Frame(root, bg="#45DFB1")
     ff.place(x=1000, y=270, width=500, height=700)
 
-    gr_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    gr_path = "logoo.PNG"
     gr = Image.open(gr_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gr)
     eli = tk.Label(ff, image=photo, bg="#45DFB1")
@@ -328,7 +328,7 @@ def show_tutorial():
     fe = tk.Frame(root, bg="#45DFB1")
     fe.place(x=1700, y=270, width=500, height=700)
 
-    ge_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\call.PNG"
+    ge_path = "call.PNG"
     ge = Image.open(ge_path).resize((350, 350))
     photo = ImageTk.PhotoImage(ge)
     elo = tk.Label(fe, image=photo, bg="#45DFB1")
@@ -338,7 +338,7 @@ def show_tutorial():
     fa = tk.Frame(root, bg="#45DFB1")
     fa.place(x=2400, y=270, width=500, height=700)
 
-    ga_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    ga_path = "logoo.PNG"
     ga = Image.open(ga_path).resize((350, 350))
     photo = ImageTk.PhotoImage(ga)
     ela = tk.Label(fa, image=photo, bg="#45DFB1")
@@ -348,7 +348,7 @@ def show_tutorial():
     fp = tk.Frame(root, bg="#45DFB1")
     fp.place(x=3100, y=270, width=500, height=700)
 
-    go_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\drink.PNG"
+    go_path = "drink.PNG"
     go = Image.open(go_path).resize((350, 350))
     photo = ImageTk.PhotoImage(go)
     elx = tk.Label(fp, image=photo, bg="#45DFB1")
@@ -361,7 +361,7 @@ def show_tutorial():
     fd = tk.Frame(root, bg="#45DFB1")
     fd.place(x=300, y=1050, width=500, height=700)
 
-    gp_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    gp_path = "logoo.PNG"
     gp = Image.open(gp_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gp)
     elq = tk.Label(fd, image=photo, bg="#45DFB1")
@@ -371,7 +371,7 @@ def show_tutorial():
     fq = tk.Frame(root, bg="#45DFB1")
     fq.place(x=1000, y=1050, width=500, height=700)
 
-    gd_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    gd_path = "logoo.PNG"
     gd = Image.open(gd_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gd)
     elw = tk.Label(fq, image=photo, bg="#45DFB1")
@@ -381,7 +381,7 @@ def show_tutorial():
     ft = tk.Frame(root, bg="#45DFB1")
     ft.place(x=1700, y=1050, width=500, height=700)
 
-    gk_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    gk_path = "logoo.PNG"
     gk = Image.open(gk_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gk)
     elp = tk.Label(ft, image=photo, bg="#45DFB1")
@@ -391,7 +391,7 @@ def show_tutorial():
     fl = tk.Frame(root, bg="#45DFB1")
     fl.place(x=2400, y=1050, width=500, height=700)
 
-    gs_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    gs_path = "logoo.PNG"
     gs = Image.open(gs_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gs)
     elt = tk.Label(fl, image=photo, bg="#45DFB1")
@@ -401,7 +401,7 @@ def show_tutorial():
     fk = tk.Frame(root, bg="#45DFB1")
     fk.place(x=3100, y=1050, width=500, height=700)
 
-    gy_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    gy_path = "logoo.PNG"
     gy = Image.open(gy_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gy)
     elf = tk.Label(fk, image=photo, bg="#45DFB1")
@@ -422,7 +422,7 @@ def Social():
     fr.place_forget()
     image_label.place_forget()
    
-    path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    path = "set.PNG"
     new = Image.open(path).resize((60, 60))  
     mm = ImageTk.PhotoImage(new)  
 
@@ -431,7 +431,7 @@ def Social():
                                 border_color="black", border_width=2, command=return_to_settings)
     so_button.place(x=12, y=20)
 
-    pa = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven.PNG"
+    pa = "ven.PNG"
     ne = Image.open(pa).resize((1050, 1250))  
     mp = ImageTk.PhotoImage(ne)  
 
@@ -440,7 +440,7 @@ def Social():
                                 border_color="black", border_width=2)
     so_button.place(x=100, y=80)
 
-    a = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven2.PNG"
+    a = "ven2.PNG"
     e = Image.open(a).resize((1400, 600))  
     mu = ImageTk.PhotoImage(e)  
 
@@ -449,7 +449,7 @@ def Social():
                                 border_color="black", border_width=2)
     so_button.place(x=700, y=50)
 
-    aa = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven3.PNG"
+    aa = "ven3.PNG"
     ee = Image.open(aa).resize((700, 600))  
     pl = ImageTk.PhotoImage(ee)  
 
@@ -458,7 +458,7 @@ def Social():
                                 border_color="black", border_width=2)
     so_button.place(x=700, y=400)
 
-    ah = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ven4.PNG"
+    ah = "ven4.PNG"
     eh = Image.open(ah).resize((550, 600))  
     pw = ImageTk.PhotoImage(eh)  
 
@@ -485,7 +485,7 @@ def TP():
     image_label.place_forget()
 
     
-    new_image_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    new_image_path = "set.PNG"
     new_image = Image.open(new_image_path).resize((60, 60))  
     new_image_pho = ImageTk.PhotoImage(new_image)  
 
@@ -603,35 +603,35 @@ def show_settings():
                                 border_color="black", border_width=2, command=show_main)
     back_button.place(x=300, y=600)
 
-    ho = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\bak.PNG"
+    ho = "bak.PNG"
     hom = Image.open(ho).resize((250, 250))
     photo = ImageTk.PhotoImage(hom)
     hm = tk.Label(fra, image=photo, bg="#213A57") 
     hm.place(x=420, y=1260)  
     hm.image = photo  
 
-    abo = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ab.PNG"
+    abo = "ab.PNG"
     abou = Image.open(abo).resize((130, 130))
     photo = ImageTk.PhotoImage(abou)
     ao = tk.Label(fra, image=photo, bg="#213A57") 
     ao.place(x=250, y=210)  
     ao.image = photo  
 
-    lo = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\log.PNG"
+    lo = "log.PNG"
     lol = Image.open(lo).resize((130, 130))
     photo = ImageTk.PhotoImage(lol)
     l = tk.Label(fra, image=photo, bg="#213A57") 
     l.place(x=250, y=420)  
     l.image = photo  
 
-    so = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\soc.PNG"
+    so = "soc.PNG"
     sos = Image.open(so).resize((130, 130))
     photo = ImageTk.PhotoImage(sos)
     s = tk.Label(fra, image=photo, bg="#213A57") 
     s.place(x=1200, y=210)  
     s.image = photo  
 
-    pem = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\priv.PNG"
+    pem = "priv.PNG"
     po = Image.open(pem).resize((130, 130))
     photo = ImageTk.PhotoImage(po)
     pv = tk.Label(fra, image=photo, bg="#213A57") 
@@ -680,13 +680,11 @@ def about():
     ii_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ash.PNG"
   
     
-     
-
     i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\rick.PNG"
    
 
    
-    ab = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    ab = "set.PNG"
     abb = Image.open(ab).resize((60, 60))  
     abu = ImageTk.PhotoImage(abb)  
 
@@ -713,7 +711,7 @@ def show_login():
     fre.place(x=155, y=200, width=1200, height=1620)
 
     
-    img_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\user.PNG"
+    img_path = "user.PNG"
     img = Image.open(img_path).resize((150, 150))
     photo = ImageTk.PhotoImage(img)
     label = tk.Label(frr, image=photo, bg="#213A57")
@@ -721,14 +719,14 @@ def show_login():
     label.image = photo  
 
 
-    mg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\pass.PNG"
+    mg_path = "pass.PNG"
     mg = Image.open(mg_path).resize((150, 150))
     photo = ImageTk.PhotoImage(mg)
     bel = tk.Label(frr, image=photo, bg="#213A57")
     bel.place(x=1300, y=600)
     bel.image = photo  
 
-    g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\pep.PNG"
+    g_path = "pep.PNG"
     g = Image.open(g_path).resize((1000, 1000))
     photo = ImageTk.PhotoImage(g)
     el = tk.Label(fre, image=photo, bg="#14919B")
@@ -900,7 +898,7 @@ frame.place(x=100, y=150, width=3630, height=1720)
 fr = tk.Frame(root, bg="#14919B")
 fr.place(x=100, y=150, width=1200, height=1720)
 
-image_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+image_path = "logoo.PNG"
 image = Image.open(image_path).resize((300, 300))
 photo = ImageTk.PhotoImage(image)
 image_label = tk.Label(fr, image=photo, bg="#14919B") 
@@ -908,7 +906,7 @@ image_label.place(x=50, y=50)
 image_label.image = photo  
 
  
-img_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+img_path = "set.PNG"
 img = Image.open(img_path).resize((150, 150))
 photo = ImageTk.PhotoImage(img)
 label = tk.Label(frame, image=photo, bg="#0B6477")
@@ -916,28 +914,28 @@ label.place(x=1460, y=630)
 label.image = photo  
 
 
-im_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\tu.PNG"
+im_path = "tu.PNG"
 im = Image.open(im_path).resize((150, 150))
 pho = ImageTk.PhotoImage(im)
 lab = tk.Label(frame, im=pho, bg="#0B6477")
 lab.place(x=1460, y=380)
 lab.image = photo
 
-i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\star.PNG"
+i_path = "star.PNG"
 i = Image.open(i_path).resize((155, 150))
 ph = ImageTk.PhotoImage(i)
 lb = tk.Label(frame, i=ph, bg="#0B6477")
 lb.place(x=1460, y=92)
 lb.image = photo 
 
-ima_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\com.PNG"
+ima_path = "com.PNG"
 ima = Image.open(ima_path).resize((1300, 1300))
 p = ImageTk.PhotoImage(ima)
 lbl = tk.Label(fr, ima=p, bg="#14919B")
 lbl.place(x=20, y=400)
 lbl.image = photo 
 
-i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\commu.PNG"
+i_path = "commu.PNG"
 i = Image.open(i_path).resize((1000, 1000))
 pp = ImageTk.PhotoImage(i)
 l = tk.Label(frame, i=pp, bg="#0B6477")
