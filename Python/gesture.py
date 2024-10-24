@@ -6,9 +6,9 @@ import threading
 import customtkinter as ctk
 from customtkinter import *
 from PIL import Image, ImageTk
+import customtkinter as ctk
 import mysql.connector
 from tkinter import messagebox
-
 
 
 mp_hands = mp.solutions.hands
@@ -178,18 +178,8 @@ def start_action():
                                   border_color="black", border_width=2, command=toggle_camera)
     on_off_button.place(x=300, y=710)
     
-    
-    
-
     camera_on = False
     cap = None
-
-
-    games = ctk.CTkButton(frame, text="Turn On Games",width=200, height=50,
-                                  fg_color="#45DFB1", text_color="blue", hover_color="#0AD1C8",
-                                  border_color="black", border_width=2, command=toggle_camera)
-    games.place(x=620, y=710)
-
 
 def toggle_camera():
     global cap, camera_on
@@ -320,16 +310,6 @@ def show_tutorial():
     n2 = ctk.CTkLabel(fru, text="Raise your index and\n\n" "middle fingers to form a V shape", font=("Arial", 15), text_color="white")
     n2.place(x=10, y=230)
 
-    ff = tk.Frame(root, bg="#45DFB1")
-    ff.place(x=1000, y=270, width=500, height=700)
-
-    gr_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gr = Image.open(gr_path).resize((350, 350))
-    photo = ImageTk.PhotoImage(gr)
-    eli = tk.Label(ff, image=photo, bg="#45DFB1")
-    eli.place(x=30, y=120)
-    eli.image = photo
-
 
     fe = tk.Frame(root, bg="#45DFB1")
     fe.place(x=1700, y=270, width=500, height=700)
@@ -346,17 +326,6 @@ def show_tutorial():
     
     n4 = ctk.CTkLabel(fe, text="Raise your thumb and pinky", font=("Arial", 15), text_color="white")
     n4.place(x=0, y=230)
-
-    fa = tk.Frame(root, bg="#45DFB1")
-    fa.place(x=2400, y=270, width=500, height=700)
-
-    ga_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    ga = Image.open(ga_path).resize((350, 350))
-    photo = ImageTk.PhotoImage(ga)
-    ela = tk.Label(fa, image=photo, bg="#45DFB1")
-    ela.place(x=30, y=120)
-    ela.image = photo 
-
 
     fp = tk.Frame(root, bg="#45DFB1")
     fp.place(x=3100, y=270, width=500, height=700)
@@ -392,16 +361,6 @@ def show_tutorial():
     n7 = ctk.CTkLabel(fd, text="Form a circle Keep your\n\n" "other three fingers extend", font=("Arial", 15), text_color="white")
     n7.place(x=10, y=230)
 
-    fq = tk.Frame(root, bg="#45DFB1")
-    fq.place(x=1000, y=1050, width=500, height=700)
-
-    gd_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gd = Image.open(gd_path).resize((350, 350))
-    photo = ImageTk.PhotoImage(gd)
-    elw = tk.Label(fq, image=photo, bg="#45DFB1")
-    elw.place(x=30, y=120)
-    elw.image = photo
-
     ft = tk.Frame(root, bg="#45DFB1")
     ft.place(x=1700, y=1050, width=500, height=700)
 
@@ -418,16 +377,6 @@ def show_tutorial():
     n9 = ctk.CTkLabel(ft, text="Raise your hand", font=("Arial", 15), text_color="white")
     n9.place(x=10, y=230)
 
-    fl = tk.Frame(root, bg="#45DFB1")
-    fl.place(x=2400, y=1050, width=500, height=700)
-
-    gs_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
-    gs = Image.open(gs_path).resize((350, 350))
-    photo = ImageTk.PhotoImage(gs)
-    elt = tk.Label(fl, image=photo, bg="#45DFB1")
-    elt.place(x=30, y=120)
-    elt.image = photo 
-
     fk = tk.Frame(root, bg="#45DFB1")
     fk.place(x=3100, y=1050, width=500, height=700)
 
@@ -435,7 +384,7 @@ def show_tutorial():
     gy = Image.open(gy_path).resize((350, 350))
     photo = ImageTk.PhotoImage(gy)
     elf = tk.Label(fk, image=photo, bg="#45DFB1")
-    elf.place(x=30, y=120)
+    elf.place(x=120, y=120)
     elf.image = photo 
 
 def Social():
@@ -682,11 +631,6 @@ def show_settings():
     text.place(x=100, y=20)
 
 
-    
-
-
-
-
 def about():
     global frr
     global rr
@@ -701,38 +645,44 @@ def about():
     about_title.place(x=200, y=100)
 
     about_description = ctk.CTkLabel(frr, text="Introducing SignLearn, an innovative app designed to make learning and practicing sign language accessible and engaging for everyone. Whether you're a beginner eager to start or someone looking to enhance your skills, SignLearn offers interactive lessons, quizzes, and real-time practice exercises. The app utilizes visual demonstrations and personalized feedback to help users develop fluency in sign language, making it ideal for individuals, families, or educators who want to communicate more effectively with the deaf and hard-of-hearing community. With a user-friendly interface, progress tracking, and a vast library of signs, SignLearn makes mastering sign language both fun and convenient.",
-                                 text_color="white", font=("Arial", 16), wraplength=1200)
+                                 text_color="white", font=("Arial", 16), wraplength=1000)
     about_description.place(x=200, y=180)
 
 
-    vince = ctk.CTkLabel(rr, text="ALOBIN",
-                                     text_color="white", font=("Arial", 16), wraplength=800)
+    vince = ctk.CTkLabel(rr, text="ALOBIN", text_color="white", font=("Arial", 16), wraplength=800)                            
     vince.place(x=120, y=30)
 
-    carlo = ctk.CTkLabel(rr, text="Baracena",
-                                     text_color="white", font=("Arial", 16), wraplength=800)
-    carlo.place(x=180, y=30)
-
-
-    vince = ctk.CTkLabel(rr, text="BACKEND",
-                                     text_color="white", font=("Arial", 16), wraplength=800)
+    vince = ctk.CTkLabel(rr, text="BACKEND",text_color="white", font=("Arial", 16), wraplength=800)                            
     vince.place(x=100, y=300)
 
+    rek = ctk.CTkLabel(rr, text="CRUZ", text_color="white", font=("Arial", 16), wraplength=800)                            
+    rek.place(x=1380, y=30)
+
+    trk = ctk.CTkLabel(rr, text="BACKEND",text_color="white", font=("Arial", 16), wraplength=800)                            
+    trk.place(x=1360, y=300)
+
     g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\picc.PNG"
-    
+    g = Image.open(g_path).resize((450, 450))
+    photo = ImageTk.PhotoImage(g)
+    el = tk.Label(rr, image=photo, bg="#14919B")
+    el.place(x=100, y=150)
+    el.image = photo  
 
     gg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\bara.PNG"
-    
+   
 
     gi_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\jc.PNG"
-    
+  
 
     ii_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ash.PNG"
-  
-    
-     
+   
 
     i_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\rick.PNG"
+    i = Image.open(i_path).resize((450, 450))
+    photo = ImageTk.PhotoImage(i)
+    og = tk.Label(rr, image=photo, bg="#14919B")
+    og.place(x=2900, y=150)
+    og.image = photo  
    
 
    
@@ -759,8 +709,8 @@ def show_login():
     # Initialize database connection
     try:
         db = mysql.connector.connect(
-            host="172.24.70.100",
-            port=3306,
+            host="localhost",
+            port=3308,
             user="root",
             password="",
             database="client"
