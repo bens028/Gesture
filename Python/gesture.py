@@ -57,8 +57,6 @@ def is_up_me_sign(hand_landmarks):
             thumb_tip.y < ring_finger_tip.y and 
             thumb_tip.y < pinky_finger_tip.y)
     
-
-
 def is_call_me_sign(hand_landmarks):
     thumb_tip = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP]
     index_finger_tip = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP]
@@ -66,8 +64,6 @@ def is_call_me_sign(hand_landmarks):
     ring_finger_tip = hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_TIP]
     pinky_finger_tip = hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_TIP]
     pinky_finger_dip = hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_DIP]
-   
-
 
     return (thumb_tip.y < index_finger_tip.y and 
             thumb_tip.y < middle_finger_tip.y and
@@ -107,9 +103,6 @@ def is_ok_sign(hand_landmarks):
             middle_finger_tip.y < thumb_tip.y and
             ring_finger_tip.y < thumb_tip.y and
             pinky_finger_tip.y < thumb_tip.y)
-            
-
-
             
 
 
@@ -343,7 +336,7 @@ def show_tutorial():
     n4.place(x=10, y=230) 
 
     
-#Down frame
+  # Down frame
 
     fd = tk.Frame(root, bg="#45DFB1")
     fd.place(x=300, y=1050, width=500, height=700)
@@ -386,6 +379,12 @@ def show_tutorial():
     elf = tk.Label(fk, image=photo, bg="#45DFB1")
     elf.place(x=120, y=120)
     elf.image = photo 
+
+    n9 = ctk.CTkLabel(fk, text="Thumbs Up", font=("Arial", 25), text_color="white")
+    n9.place(x=30, y=198)
+
+    n10 = ctk.CTkLabel(fk, text="Raise your thumb", font=("Arial", 15), text_color="white")
+    n10.place(x=10, y=230)
 
 def Social():
     for widget in frame.winfo_children():
@@ -445,8 +444,6 @@ def Social():
                                 fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                 border_color="black", border_width=2)
     so_button.place(x=1100, y=400)
-
-    
 
 
 def TP():
@@ -531,8 +528,6 @@ def TP():
     use = ctk.CTkLabel(frr, text="I agree to terms and privacy policy", text_color="white", font=("Arial", 16))  
     use.place(x=130, y=680)  
   
-
-
 def show_settings():
    
     for widget in frame.winfo_children():
@@ -585,11 +580,13 @@ def show_settings():
                                 border_color="black", border_width=2, command=show_main)
     back_button.place(x=300, y=600)
 
+    
+
     ho = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\bak.PNG"
-    hom = Image.open(ho).resize((250, 250))
+    hom = Image.open(ho).resize((220, 220))
     photo = ImageTk.PhotoImage(hom)
     hm = tk.Label(fra, image=photo, bg="#213A57") 
-    hm.place(x=420, y=1260)  
+    hm.place(x=425, y=1295)  
     hm.image = photo  
 
     abo = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\ab.PNG"
@@ -620,12 +617,40 @@ def show_settings():
     pv.place(x=1195, y=425)  
     pv.image = photo  
 
+    ss_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\set.PNG"
+    ss_image = Image.open(ss_path).resize((130, 130))  
+    photo = ImageTk.PhotoImage(ss_image)  
+    st= tk.Label(fra, image=photo, bg="#0AD1C8") 
+    st.place(x=3350, y=4)  
+    st.image = photo  
+
     dd_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
     dd = Image.open(dd_path).resize((150, 150))
     photo = ImageTk.PhotoImage(dd)
     llw = tk.Label(mw, image=photo, bg="#0AD1C8")
     llw.place(x=30, y=5)
     llw.image = photo
+
+    com_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\comun.PNG"
+    com = Image.open(com_path).resize((500, 500))
+    photo = ImageTk.PhotoImage(com)
+    con = tk.Label(fra, image=photo, bg="#213A57")
+    con.place(x=2200, y=500)
+    con.image = photo
+
+    com2_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\comun2.PNG"
+    com2 = Image.open(com2_path).resize((500, 500))
+    photo = ImageTk.PhotoImage(com2)
+    con2 = tk.Label(fra, image=photo, bg="#213A57")
+    con2.place(x=2800, y=890)
+    con2.image = photo
+
+    com3_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\comun3.PNG"
+    com3 = Image.open(com3_path).resize((350, 350))
+    photo = ImageTk.PhotoImage(com3)
+    con3 = tk.Label(fra, image=photo, bg="#213A57")
+    con3.place(x=1900, y=200)
+    con3.image = photo
 
     text = ctk.CTkLabel(mw, text="MORRON 5", font=("Arial", 26), text_color="white")
     text.place(x=100, y=20)
@@ -650,18 +675,18 @@ def about():
 
 
     vince = ctk.CTkLabel(rr, text="ALOBIN", text_color="white", font=("Arial", 16), wraplength=800)                            
-    vince.place(x=120, y=30)
+    vince.place(x=115, y=30)
 
     vince = ctk.CTkLabel(rr, text="BACKEND",text_color="white", font=("Arial", 16), wraplength=800)                            
     vince.place(x=100, y=300)
 
     rek = ctk.CTkLabel(rr, text="CRUZ", text_color="white", font=("Arial", 16), wraplength=800)                            
-    rek.place(x=1380, y=30)
+    rek.place(x=1365, y=30)
 
     trk = ctk.CTkLabel(rr, text="BACKEND",text_color="white", font=("Arial", 16), wraplength=800)                            
     trk.place(x=1360, y=300)
 
-    g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\picc.PNG"
+    g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\vinc.PNG"
     g = Image.open(g_path).resize((450, 450))
     photo = ImageTk.PhotoImage(g)
     el = tk.Label(rr, image=photo, bg="#14919B")
@@ -706,7 +731,7 @@ def return_to_settings():
 def show_login():
     global frr, fre, db, cursor
     
-    # Initialize database connection
+    
     try:
         db = mysql.connector.connect(
             host="localhost",
@@ -717,7 +742,7 @@ def show_login():
         )
         cursor = db.cursor()
         
-        # Create 'info' table if it doesn't exist
+        
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS info (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -729,16 +754,16 @@ def show_login():
         messagebox.showerror("Database Error", f"Could not connect to database: {err}")
         return
 
-    # Hide previous frame
+    
     fra.place_forget()
     
-    # Create new frames
+   
     frr = tk.Frame(root, bg="#213A57")
     frr.place(x=155, y=200, width=3520, height=1620)
     fre = tk.Frame(root, bg="#14919B")
     fre.place(x=155, y=200, width=1200, height=1620)
 
-    # Load and display user icon
+    
     img_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\user.PNG"
     img = Image.open(img_path).resize((150, 150))
     photo = ImageTk.PhotoImage(img)
@@ -746,7 +771,7 @@ def show_login():
     label.place(x=1300, y=400)
     label.image = photo
 
-    # Load and display password icon
+    
     mg_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\pass.PNG"
     mg = Image.open(mg_path).resize((150, 150))
     photo = ImageTk.PhotoImage(mg)
@@ -754,15 +779,29 @@ def show_login():
     bel.place(x=1300, y=600)
     bel.image = photo
 
-    # Load and display background image
-    g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\pep.PNG"
+    
+    g_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logg.PNG"
     g = Image.open(g_path).resize((1000, 1000))
     photo = ImageTk.PhotoImage(g)
-    el = tk.Label(fre, image=photo, bg="#14919B")
-    el.place(x=80, y=400)
+    el = tk.Label(frr, image=photo, bg="#213A57")
+    el.place(x=2400, y=300)
     el.image = photo
 
-    # Create labels and entries
+    log_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\log1.PNG"
+    log = Image.open(log_path).resize((1000, 1000))
+    photo = ImageTk.PhotoImage(log)
+    lel = tk.Label(fre, image=photo, bg="#14919B")
+    lel.place(x=80, y=400)
+    lel.image = photo
+
+    LOGO_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\logoo.PNG"
+    LOGO = Image.open(LOGO_path).resize((300, 300))
+    photo = ImageTk.PhotoImage(LOGO)
+    LOG_label = tk.Label(fre, image=photo, bg="#14919B") 
+    LOG_label.place(x=40, y=90)  
+    LOG_label.image = photo  
+
+   
     user_label = ctk.CTkLabel(frr, text="Username", text_color="white", font=("Arial", 20))
     user_label.place(x=650, y=180)
 
@@ -778,7 +817,7 @@ def show_login():
     pass_entry = ctk.CTkEntry(frr, width=200, show="*", height=30)
     pass_entry.place(x=650, y=285)
 
-    # Status label for login feedback
+    
     status_label = tk.Label(frr, text="", font=("Helvetica", 10), bg="#213A57", fg="white")
     status_label.place(x=650, y=450)
 
@@ -797,7 +836,7 @@ def show_login():
             if result and password == result[0]:
                 status_label.config(text=f"Welcome, {username}!", fg="green")
                 messagebox.showinfo("Success", "Login successful!")
-                # Add your code here to proceed after successful login
+                
             else:
                 status_label.config(text="Invalid username or password.", fg="red")
                 messagebox.showerror("Error", "Invalid username or password")
@@ -823,7 +862,7 @@ def show_login():
             messagebox.showerror("Database Error", f"Error: {err}")
             db.rollback()
 
-    # Create buttons with command functions
+    
     login_button = ctk.CTkButton(frr, text="Log in", corner_radius=25, width=150, height=40,
                                 fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                 border_color="black", border_width=2, command=handle_login)
@@ -868,22 +907,14 @@ def show_main():
         fer.place_forget()
     if 'fru' in globals():
         fru.place_forget()
-    if 'ff' in globals():
-        ff.place_forget()
     if 'fe' in globals():
         fe.place_forget()
-    if 'fa' in globals():
-        fa.place_forget()
     if 'fp' in globals():
         fp.place_forget() 
     if 'fd' in globals():
         fd.place_forget()
-    if 'fq' in globals():
-        fq.place_forget()
     if 'ft' in globals():
         ft.place_forget()
-    if 'fl' in globals():
-        fl.place_forget()
     if 'fk' in globals():
         fk.place_forget()      
     if 'me' in globals():
@@ -940,7 +971,7 @@ lb.place(x=1460, y=92)
 lb.image = photo 
 
 ima_path = "C:\\Users\\ASUS\\OneDrive - Asia Pacific College\\Documents\\Alobin ICT241\\Python\\com.PNG"
-ima = Image.open(ima_path).resize((1300, 1300))
+ima = Image.open(ima_path).resize((1200, 1200))
 p = ImageTk.PhotoImage(ima)
 lbl = tk.Label(fr, ima=p, bg="#14919B")
 lbl.place(x=20, y=400)
@@ -973,7 +1004,6 @@ settings_button = ctk.CTkButton(frame, text="Settings", corner_radius=25, width=
                                  fg_color="#45DFB1", text_color="black", hover_color="#0AD1C8",
                                  border_color="black", border_width=2,command=show_settings)
 settings_button.place(x=720, y=290)  
-
 
 
 root.mainloop()                           
